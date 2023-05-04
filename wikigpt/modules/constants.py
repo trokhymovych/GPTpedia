@@ -1,2 +1,3 @@
 DEFAULT_SEARCH_SCORE = 1.
 DEFAULT_NUMBER_OF_SEARCH_RESULTS = 100
+ENWIKI_URL = "https://en.wikipedia.org/w/api.php"
