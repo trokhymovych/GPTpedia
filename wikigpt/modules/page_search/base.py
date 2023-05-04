@@ -7,7 +7,7 @@ from wikigpt.modules.entities import PageSearchResult
 logger = logging.getLogger(__name__)
 
 
-class SearchBase(ABC):
+class PageSearchBase(ABC):
     def __init__(self, logger_object: logging.Logger = logger, **kwargs: Any) -> None:
         self.logger = logger_object
 

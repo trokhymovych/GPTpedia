@@ -12,12 +12,12 @@ from fake_useragent import UserAgent
 
 from wikigpt.modules.constants import DEFAULT_SEARCH_SCORE
 from wikigpt.modules.entities import PageSearchResult
-from wikigpt.modules.page_search.wiki import SearchBase
+from wikigpt.modules.page_search.wiki import PageSearchBase
 
 logger = logging.getLogger(__name__)
 
 
-class GoogleSearchWiki(SearchBase):
+class PageSearchGoogle(PageSearchBase):
     def __init__(self, logger_object: logging.Logger = logger, **kwargs: Any):
         super().__init__(logger_object, **kwargs)
 

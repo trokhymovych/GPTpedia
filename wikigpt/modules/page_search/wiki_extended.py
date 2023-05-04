@@ -6,12 +6,12 @@ from flair.models import SequenceTagger
 
 from wikigpt.modules.constants import DEFAULT_SEARCH_SCORE
 from wikigpt.modules.entities import PageSearchResult
-from wikigpt.modules.page_search.wiki import SearchWiki
+from wikigpt.modules.page_search.wiki import PageSearchWiki
 
 logger = logging.getLogger(__name__)
 
 
-class SearchWikiExtended(SearchWiki):
+class PageSearchWikiExtended(PageSearchWiki):
 
     def __init__(self, logger_object: logging.Logger = logger, **kwargs: Any):
         super().__init__(logger_object, **kwargs)
