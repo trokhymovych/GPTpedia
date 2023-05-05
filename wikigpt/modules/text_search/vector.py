@@ -3,12 +3,14 @@ import time
 from typing import Any
 
 import numpy as np
+import torch  # noqa: F401
 from sentence_transformers import SentenceTransformer, util
 
 from wikigpt.modules.constants import (DEFAULT_EMBEDDINGS_MODEL,
                                        DEFAULT_NUMBER_OF_TEXT_SEARCH_RESULTS)
 from wikigpt.modules.entities import TextDocument
 from wikigpt.modules.text_search.base import TextSearchBase
+from wikigpt.modules.utils import text_processing_base
 
 logger = logging.getLogger(__name__)
 
@@ -24,8 +26,8 @@ class TextSearchVector(TextSearchBase):
         Method that implements indexing of the content
         """
         self.documents = documents
-        passages_texts = [self._text_processing(document.document_content) for document in documents]
-        passages_names = [self._text_processing(document.document_name) for document in documents]
+        passages_texts = [text_processing_base(document.document_content) for document in documents]
+        passages_names = [text_processing_base(document.document_name) for document in documents]
         self.corpus_embeddings = self.encoder.encode(
             passages_texts,
             convert_to_tensor=True,
@@ -63,13 +65,3 @@ class TextSearchVector(TextSearchBase):
         end_time = time.time()
         self.logger.info(f"Search time: {end_time - start_time}")
         return found_documents_filtered
-
-    @staticmethod
-    def _text_processing(text: str) -> str:
-        """
-        Method for internal basic text processing before vectorisation.
-        """
-        text = text.replace("===", " ")
-        text = text.replace("==", " ")
-        text = text.replace("\n", " ")
-        return text

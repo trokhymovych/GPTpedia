@@ -24,9 +24,12 @@ class PageSearchWikiExtended(PageSearchWiki):
         """
         named_entities = self._get_entities(query)
         search_results = super().search(query, **kwargs)
-        ne_search_results = super().search(' '.join(named_entities), **kwargs)
-        results_mixed = self._mix_results(search_results, ne_search_results)
-        return results_mixed
+        if len(' '.join(named_entities)) > 3:
+            ne_search_results = super().search(' '.join(named_entities), **kwargs)
+            results_mixed = self._mix_results(search_results, ne_search_results)
+            return results_mixed
+        else:
+            return search_results
 
     @staticmethod
     def _mix_results(result_left: PageSearchResult, result_right: PageSearchResult) -> PageSearchResult:
