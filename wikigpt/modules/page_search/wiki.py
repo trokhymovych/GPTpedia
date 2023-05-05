@@ -3,7 +3,7 @@ from typing import Any
 
 import mwapi
 
-from wikigpt.modules.constants import (DEFAULT_NUMBER_OF_SEARCH_RESULTS,
+from wikigpt.modules.constants import (DEFAULT_NUMBER_OF_PAGE_SEARCH_RESULTS,
                                        DEFAULT_SEARCH_SCORE)
 from wikigpt.modules.entities import PageSearchResult
 from wikigpt.modules.page_search.base import PageSearchBase
@@ -18,7 +18,7 @@ class PageSearchWiki(PageSearchBase):
         self.session = mwapi.Session('https://en.wikipedia.org')
 
     def search(self, query: str, **kwargs) -> PageSearchResult:
-        n_results = kwargs.get("n_results", DEFAULT_NUMBER_OF_SEARCH_RESULTS)
+        n_results = kwargs.get("n_results", DEFAULT_NUMBER_OF_PAGE_SEARCH_RESULTS)
         params = {
             "action": "query",
             "format": 2,

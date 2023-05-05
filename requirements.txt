@@ -7,3 +7,4 @@ flake8==3.8.4
 isort==5.7.0
 mwparserfromhell==0.6.4
 mwedittypes==2.0.2
+sentence-transformers==2.2.2

@@ -16,3 +16,10 @@ class TextParseResult(BaseModel):
     page_name: Optional[str]
     sections_names: Optional[list[str]]
     sections_text: list[str]
+
+
+class TextDocument(BaseModel):
+    document_id: str
+    document_name: Optional[str]
+    document_content: str
+    score: Optional[float] = None
