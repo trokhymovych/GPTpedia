@@ -1,4 +1,4 @@
-# WikiGPT
+# GPTpedia
 The repository for developing Q&amp;A system based on Wikipedia and generative models.
 
 ## Pipelines available: 
