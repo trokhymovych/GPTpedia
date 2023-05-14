@@ -1,19 +1,19 @@
 import logging
 import time
 
-from typing import Any
+from typing import Any, List
 
 import numpy as np
 import torch  # noqa: F401
 
 from sentence_transformers import SentenceTransformer, util
-from wikigpt.modules.constants import (
+from gptpedia.modules.constants import (
     DEFAULT_EMBEDDINGS_MODEL,
     DEFAULT_NUMBER_OF_TEXT_SEARCH_RESULTS,
 )
-from wikigpt.modules.entities import TextDocument
-from wikigpt.modules.text_search.base import TextSearchBase
-from wikigpt.modules.utils import text_processing_base
+from gptpedia.modules.entities import TextDocument
+from gptpedia.modules.text_search.base import TextSearchBase
+from gptpedia.modules.utils import text_processing_base
 
 
 logger = logging.getLogger(__name__)
@@ -25,7 +25,7 @@ class TextSearchVector(TextSearchBase):
         model_name = kwargs.get("model_name", DEFAULT_EMBEDDINGS_MODEL)
         self.encoder = SentenceTransformer(model_name)
 
-    def index(self, documents: list[TextDocument], **kwargs):
+    def index(self, documents: List[TextDocument], **kwargs):
         """
         Method that implements indexing of the content
         """
@@ -43,7 +43,7 @@ class TextSearchVector(TextSearchBase):
             show_progress_bar=True
         )
 
-    def search(self, query: str, **kwargs) -> list[TextDocument]:
+    def search(self, query: str, **kwargs) -> List[TextDocument]:
         """
         Method to search within documents:
         # todo: define the key phrases improves the general model performance.
