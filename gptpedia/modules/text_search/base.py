@@ -1,9 +1,9 @@
 import logging
 
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, List
 
-from wikigpt.modules.entities import PageSearchResult, TextDocument
+from gptpedia.modules.entities import PageSearchResult, TextDocument
 
 
 logger = logging.getLogger(__name__)
@@ -14,7 +14,7 @@ class TextSearchBase(ABC):
         self.logger = logger_object
 
     @abstractmethod
-    def index(self, documents: list[TextDocument], **kwargs):
+    def index(self, documents: List[TextDocument], **kwargs):
         raise NotImplementedError
 
     @abstractmethod

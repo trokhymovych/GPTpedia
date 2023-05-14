@@ -7,6 +7,7 @@ import numpy as np
 import torch  # noqa: F401
 
 from sentence_transformers import SentenceTransformer, util
+
 from gptpedia.modules.constants import (
     DEFAULT_EMBEDDINGS_MODEL,
     DEFAULT_NUMBER_OF_TEXT_SEARCH_RESULTS,
