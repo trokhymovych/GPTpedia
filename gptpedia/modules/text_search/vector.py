@@ -1,16 +1,20 @@
 import logging
 import time
+
 from typing import Any
 
 import numpy as np
 import torch  # noqa: F401
-from sentence_transformers import SentenceTransformer, util
 
-from wikigpt.modules.constants import (DEFAULT_EMBEDDINGS_MODEL,
-                                       DEFAULT_NUMBER_OF_TEXT_SEARCH_RESULTS)
+from sentence_transformers import SentenceTransformer, util
+from wikigpt.modules.constants import (
+    DEFAULT_EMBEDDINGS_MODEL,
+    DEFAULT_NUMBER_OF_TEXT_SEARCH_RESULTS,
+)
 from wikigpt.modules.entities import TextDocument
 from wikigpt.modules.text_search.base import TextSearchBase
 from wikigpt.modules.utils import text_processing_base
+
 
 logger = logging.getLogger(__name__)
 

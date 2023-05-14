@@ -1,12 +1,14 @@
 import logging
-from typing import Any
+
+from typing import Any, List
 
 from flair.data import Sentence
 from flair.models import SequenceTagger
 
-from wikigpt.modules.constants import DEFAULT_SEARCH_SCORE
-from wikigpt.modules.entities import PageSearchResult
-from wikigpt.modules.page_search.wiki import PageSearchWiki
+from gptpedia.modules.constants import DEFAULT_SEARCH_SCORE
+from gptpedia.modules.entities import PageSearchResult
+from gptpedia.modules.page_search.wiki import PageSearchWiki
+
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +49,7 @@ class PageSearchWikiExtended(PageSearchWiki):
                 result_left.scores.append(DEFAULT_SEARCH_SCORE)
         return result_left
 
-    def _get_entities(self, text: str) -> list[str]:
+    def _get_entities(self, text: str) -> List[str]:
         """
         Get the list of named entities for given text.
         :param text: str, text used for NER extraction

@@ -1,8 +1,10 @@
 import logging
+
 from abc import ABC, abstractmethod
 from typing import Any
 
 from wikigpt.modules.entities import PageSearchResult, TextDocument
+
 
 logger = logging.getLogger(__name__)
 

@@ -1,13 +1,16 @@
 import logging
+
 from typing import Any
 
 import mwparserfromhell as mw
 import requests
+
 from mwedittypes.utils import wikitext_to_plaintext
 
-from wikigpt.modules.constants import ENWIKI_URL
-from wikigpt.modules.entities import TextParseResult
-from wikigpt.modules.text_parser.base import TextParserBase
+from gptpedia.modules.constants import ENWIKI_URL
+from gptpedia.modules.entities import TextParseResult
+from gptpedia.modules.text_parser.base import TextParserBase
+
 
 logger = logging.getLogger(__name__)
 

@@ -1,12 +1,16 @@
 import logging
+
 from typing import Any
 
 import mwapi
 
-from wikigpt.modules.constants import (DEFAULT_NUMBER_OF_PAGE_SEARCH_RESULTS,
-                                       DEFAULT_SEARCH_SCORE)
-from wikigpt.modules.entities import PageSearchResult
-from wikigpt.modules.page_search.base import PageSearchBase
+from gptpedia.modules.constants import (
+    DEFAULT_NUMBER_OF_PAGE_SEARCH_RESULTS,
+    DEFAULT_SEARCH_SCORE,
+)
+from gptpedia.modules.entities import PageSearchResult
+from gptpedia.modules.page_search.base import PageSearchBase
+
 
 logger = logging.getLogger(__name__)
 

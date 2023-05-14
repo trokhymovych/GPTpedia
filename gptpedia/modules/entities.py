@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import BaseModel  # type: ignore
 
@@ -6,16 +6,16 @@ from pydantic import BaseModel  # type: ignore
 class PageSearchResult(BaseModel):
     query: str
     n_results: int
-    pages_names: Optional[list[str]]
-    pages_links: Optional[list[str]]
-    metadata: Optional[list[dict]]
-    scores: Optional[list[float]]
+    pages_names: Optional[List[str]]
+    pages_links: Optional[List[str]]
+    metadata: Optional[List[dict]]
+    scores: Optional[List[float]]
 
 
 class TextParseResult(BaseModel):
     page_name: Optional[str]
-    sections_names: Optional[list[str]]
-    sections_text: list[str]
+    sections_names: Optional[List[str]]
+    sections_text: List[str]
 
 
 class TextDocument(BaseModel):

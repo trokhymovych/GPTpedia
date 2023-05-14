@@ -1,15 +1,17 @@
 import logging
-from typing import Any
+
+from typing import Any, List
 
 from tqdm import tqdm
 from transformers import pipeline
 
-from wikigpt.modules.constants import DEFAULT_QNA_MODEL, QA_MIN_SCORE
-from wikigpt.modules.entities import TextDocument
-from wikigpt.modules.page_search.wiki_extended import PageSearchWikiExtended
-from wikigpt.modules.text_parser.wiki_parser import WikiParser
-from wikigpt.modules.text_search.vector import TextSearchVector
-from wikigpt.modules.utils import text_processing_base
+from gptpedia.modules.constants import DEFAULT_QNA_MODEL, QA_MIN_SCORE
+from gptpedia.modules.entities import TextDocument
+from gptpedia.modules.page_search.wiki_extended import PageSearchWikiExtended
+from gptpedia.modules.text_parser.wiki_parser import WikiParser
+from gptpedia.modules.text_search.vector import TextSearchVector
+from gptpedia.modules.utils import text_processing_base
+
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +28,7 @@ class QNAPipeline:
         self.qna_model = pipeline('question-answering', model=qna_model_name, tokenizer=qna_model_name)
         self.logger.info("Initialization completed")
 
-    def question_answer(self, question: str, **kwargs) -> list:
+    def question_answer(self, question: str, **kwargs) -> List:
         """
         Method that implements question answering pipeline with Wikipedia model
         """

@@ -3,16 +3,19 @@ import logging
 import re
 import time
 import urllib
+
 from typing import Any
 
 import pandas as pd
 import requests
+
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
-from wikigpt.modules.constants import DEFAULT_SEARCH_SCORE
-from wikigpt.modules.entities import PageSearchResult
-from wikigpt.modules.page_search.wiki import PageSearchBase
+from gptpedia.modules.constants import DEFAULT_SEARCH_SCORE
+from gptpedia.modules.entities import PageSearchResult
+from gptpedia.modules.page_search.wiki import PageSearchBase
+
 
 logger = logging.getLogger(__name__)
 
