@@ -29,7 +29,7 @@ class GenerationPipelineBase:
 
         self.logger.info("Initialization completed")
 
-    def generate_answer(self, question: str, context: str) -> str:
+    def generate_answer(self, question: str, context: str = "") -> str:
         """
         Method that implements question answering pipeline using langchain
         """
