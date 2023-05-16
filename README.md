@@ -53,6 +53,7 @@ For this example we are using `databricks/dolly-v2-3b` model. It can be any othe
 Usage example: 
 ```python
 from gptpedia.modules.models.generation_base_pipeline import GenerationPipelineBase
+from gptpedia.modules.models.context_search import ContextPipeline
 generation_pipeline = GenerationPipelineBase()
 context_search_pipeline = ContextPipeline()
 
