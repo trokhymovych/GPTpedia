@@ -2,6 +2,8 @@ import logging
 
 from typing import Any
 
+import torch
+
 from langchain import HuggingFacePipeline, LLMChain, PromptTemplate
 from transformers import pipeline
 
@@ -15,9 +17,14 @@ class GenerationPipelineBase:
         self.logger.info("Begin initialization")
 
         model_name = kwargs.get("model_name", "databricks/dolly-v2-3b")
-        generate_text = pipeline(
-            model=model_name, trust_remote_code=True, device_map="auto", return_full_text=True
-        )
+        if torch.cuda.is_available():
+            generate_text = pipeline(
+                model=model_name, trust_remote_code=True, device_map="auto", return_full_text=True
+            )
+        else:
+            generate_text = pipeline(
+                model=model_name, trust_remote_code=True, device="cpu", return_full_text=True
+            )
         # template for an instruction with input
         prompt_with_context = PromptTemplate(
             input_variables=["instruction", "context"],

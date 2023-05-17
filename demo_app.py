@@ -7,16 +7,19 @@ from gptpedia.modules.models.context_search import ContextPipeline
 from gptpedia.modules.models.generation_base_pipeline import GenerationPipelineBase
 
 
-@st.cache_data
+# Configure Streamlit page and state
+st.set_page_config(page_title="GPTpedia", page_icon="🕸")
+
+@st.cache(allow_output_mutation=True)
 def load_context_searcher():
     return ContextPipeline()
 
-@st.cache_data
+@st.cache(allow_output_mutation=True)
 def load_generator():
     return GenerationPipelineBase()
 
 def generate_text(question: str, context: str):
-    with st.spinner("Searching for context in Wikipedia (takes approx. 30 seconds..."):
+    with st.spinner("Searching for context in Wikipedia (takes approx. 30 seconds...)"):
         if context == "Yes":
             context = context_search_pipeline.generate_contex(question)
         else:
@@ -29,9 +32,6 @@ def generate_text(question: str, context: str):
 
 generation_pipeline = load_generator()
 context_search_pipeline = load_context_searcher()
-
-# Configure Streamlit page and state
-st.set_page_config(page_title="GPTpedia", page_icon="🕸")
 
 if "text" not in st.session_state:
     st.session_state.text = ""
@@ -46,11 +46,11 @@ st.markdown(
     "for question answering based on Wikipedia"
 )
 
-topic = st.text_input(label="Question", placeholder="What is the shape of Earth?")
+question = st.text_input(label="Question", placeholder="What is the shape of Earth?")
 wiki_context_bool = st.radio('Do you want to look for context in Wikipedia?', ['Yes', 'No'])
 
 if st.button(label="Generate text"):
-    generate_text()
+    generate_text(question, context=wiki_context_bool)
     print(topic, wiki_context_bool)
     print(st.session_state.text)
 
